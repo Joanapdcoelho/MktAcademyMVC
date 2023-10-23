@@ -116,6 +116,7 @@ namespace MktAcademy.Controllers
             return RedirectToAction("Index");
         }
 
+        //fechar a conexão
         protected override void Dispose(bool disposing)
         {
             if (disposing)
