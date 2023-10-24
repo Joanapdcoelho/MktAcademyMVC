@@ -21,14 +21,17 @@
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Courses", "Index", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Documents", "Index", "DocumentTypes", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Employees", "Index", "Employees", new { area = "" }, new { @class = "nav-link" })</li>
 
                     <li class="dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Back office<b class="caret"></b></a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Back office</a>
 
                         <ul class="dropdown-menu">
-                            <li> @Html.ActionLink("Courses", "Index", "Courses")</li>
                         </ul>
                     </li>
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

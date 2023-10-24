@@ -20,5 +20,9 @@ namespace MktAcademy.Data
         }
 
         public System.Data.Entity.DbSet<MktAcademy.Models.Course> Courses { get; set; }
+
+        public System.Data.Entity.DbSet<MktAcademy.Models.DocumentType> DocumentTypes { get; set; }
+
+        public System.Data.Entity.DbSet<MktAcademy.Models.Employee> Employees { get; set; }
     }
 }
