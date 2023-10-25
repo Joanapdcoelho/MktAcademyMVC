@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 
@@ -19,10 +20,20 @@ namespace MktAcademy.Data
         {
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //base.OnModelCreating(modelBuilder);
+
+            //Remover a regra de apagar em cascata (apagar os registos relacionados)
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+        }
+
         public System.Data.Entity.DbSet<MktAcademy.Models.Course> Courses { get; set; }
 
         public System.Data.Entity.DbSet<MktAcademy.Models.DocumentType> DocumentTypes { get; set; }
 
         public System.Data.Entity.DbSet<MktAcademy.Models.Employee> Employees { get; set; }
+
+        public System.Data.Entity.DbSet<MktAcademy.Models.Supplier> Suppliers { get; set; }
     }
 }

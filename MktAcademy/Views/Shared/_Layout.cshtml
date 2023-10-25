@@ -3,41 +3,61 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mkt Academy loja online de venda de cursos de formacao" />
+    <meta name="author" content="Joana Coelho" />
     <title>@ViewBag.Title - Mkt Academy</title>
-    @Styles.Render("~/Content/css")
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    @*@Styles.Render("~/Content/css")*@
+    @Styles.Render("~/Content/styles-shop.css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-        <div class="container">
-            @Html.ActionLink("MktAcademy", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#!"> @Html.ActionLink("MktAcademy", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Courses", "Index", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Documents", "Index", "DocumentTypes", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Employees", "Index", "Employees", new { area = "" }, new { @class = "nav-link" })</li>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
 
-                    <li class="dropdown">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Back office</a>
 
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li class="dropdown-item">@Html.ActionLink("Courses", "Index", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li class="dropdown-item">@Html.ActionLink("Documents", "Index", "DocumentTypes", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li class="dropdown-item">@Html.ActionLink("Employees", "Index", "Employees", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li class="dropdown-item">@Html.ActionLink("Suppliers", "Index", "Suppliers", new { area = "" }, new { @class = "nav-link" })</li>
                         </ul>
                     </li>
-
                 </ul>
                 @Html.Partial("_LoginPartial")
+
+                <div class="d-flex">
+                    <asp:Button class="btn btn-outline-dark" type="submit" runat="server" Text="Button">
+                        <i class="bi-cart-fill me-1"></i>
+                        Cart
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    </asp:Button>
+
+                </div>
             </div>
         </div>
     </nav>
+
     <div class="container body-content">
+
         @RenderBody()
         <hr />
         <footer>
@@ -63,20 +83,20 @@
     </script>
 
     <script>
-    jQuery.extend(jQuery.validator.methods, {
-        range: function (value, element, param) {
-            var val = Globalize.parseFloat(value);
-            return this.optional(element) || (
-                val >= param[0] && val <= param[1]);
+        jQuery.extend(jQuery.validator.methods, {
+            range: function (value, element, param) {
+                var val = Globalize.parseFloat(value);
+                return this.optional(element) || (
+                    val >= param[0] && val <= param[1]);
 
+            }
+        });
+
+        $.validator.methods.date = function (value, element) {
+            return this.optional(element) ||
+                Globalize.parseDate(value) ||
+                Globalize.parseDate(value, "dd-MM-yyyy")
         }
-    });
-
-    $.validator.methods.date = function (value, element) {
-        return this.optional(element) ||
-            Globalize.parseDate(value) ||
-            Globalize.parseDate(value, "dd-MM-yyyy")
-    }
     </script>
 </body>
 </html>

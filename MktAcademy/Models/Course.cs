@@ -38,7 +38,9 @@ namespace MktAcademy.Models
         public string Area { get; set; }
 
         [DataType (DataType.MultilineText)]
-        public string Remarks { get; set; }        
+        public string Remarks { get; set; }    
+        
+        public virtual ICollection<SupplierCourse> SupplierCourses { get; set; }
 
     }
 }
