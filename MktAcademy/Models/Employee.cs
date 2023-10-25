@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
 
 namespace MktAcademy.Models
@@ -23,6 +24,7 @@ namespace MktAcademy.Models
         [Required(ErrorMessage = "You must insert a {0}")]        
         public string LastName { get; set; }
 
+        [DataType(DataType.Date)]
         [Display(Name = "Date of Birth")]
         [Required (ErrorMessage = "You have to enter a date of birth!")]
         public DateTime DateOfBirth { get; set; }
@@ -37,7 +39,19 @@ namespace MktAcademy.Models
         public int DocumentTypeID { get; set; }//guarda o Cartão de cidadão
 
         [NotMapped] //não é colocado na base de dados serve apenas para cálculo
-        public int Age { get { return DateTime.Now.Year - DateOfBirth.Year; } }
+        public int Age
+        {
+            get
+            {
+                var myAge = DateTime.Now.Year - DateOfBirth.Year;
+                if (DateOfBirth > DateTime.Now.AddYears(-myAge))
+                {
+                    myAge--;
+                }
+                return myAge;
+            }
+
+        }
 
         public virtual DocumentType DocumentType { get; set; }  //efetua a ligação por isso é propriedade virtual
 

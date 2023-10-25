@@ -26,18 +26,19 @@ namespace MktAcademy.Models
         public decimal Price { get; set; }
         //===========       
 
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString ="{0:dd/MM/yyyy}", ApplyFormatInEditMode =true)]
-        //[Display (Name = "Last Buy")]
-        //public DateTime LastBuy { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Last Buy")]
+        public DateTime LastBuy { get; set; }
 
-        [DataType(DataType.Currency)]
-        [DisplayFormat(DataFormatString = "{0:N2}", ApplyFormatInEditMode = false)]
-        public float stock { get; set; }
+        [DataType (DataType.Currency)]
+        [DisplayFormat(DataFormatString ="{0:N2}", ApplyFormatInEditMode =false)]
+        public float Stock {  get; set; }
 
         public string Area { get; set; }
 
         [DataType (DataType.MultilineText)]
         public string Remarks { get; set; }
+        
     }
 }

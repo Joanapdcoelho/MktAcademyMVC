@@ -20,6 +20,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.Area)
         </th>
@@ -40,6 +41,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.Area)
         </td>
@@ -47,9 +49,9 @@
             @Html.DisplayFor(modelItem => item.Remarks)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CourseID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CourseID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CourseID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.CourseID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CourseID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CourseID })
         </td>
     </tr>
 }
