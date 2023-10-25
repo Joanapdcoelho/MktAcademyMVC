@@ -15,7 +15,7 @@ namespace MktAcademy
         {
             //faz logo as alterações da DB antes de começar
             Database.SetInitializer(
-                new MigrateDatabaseToLatestVersion<Data.MktAcademyContext, Migrations.Configuration>() );
+                new MigrateDatabaseToLatestVersion<Data.MktAcademyContext, Migrations.Configuration>());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

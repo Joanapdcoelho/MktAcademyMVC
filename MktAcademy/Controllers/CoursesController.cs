@@ -47,14 +47,21 @@ namespace MktAcademy.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CourseID,Name,Description,Price,Area,Remarks")] Course course)
+        public ActionResult Create([Bind(Include = "CourseID,Name,Description,Price,LastBuy,Stock,Area,Remarks")] Course course)
         {
             if (ModelState.IsValid)
             {
+                if (course.LastBuy > DateTime.Today)
+                {
+                    ModelState.AddModelError("LastBuy", "The date cannot be later than the current day.");
+                    return View(course);
+                }
+
                 db.Courses.Add(course);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
 
             return View(course);
         }
@@ -79,7 +86,7 @@ namespace MktAcademy.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CourseID,Name,Description,Price,Area,Remarks")] Course course)
+        public ActionResult Edit([Bind(Include = "CourseID,Name,Description,Price,LastBuy,Stock,Area,Remarks")] Course course)
         {
             if (ModelState.IsValid)
             {
