@@ -48,5 +48,35 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/jquery.validate.globalize.min.js"></script>
+    <script src="~/Scripts/jquery.validate.globalize.culture.@(System.Threading.Thread.CurrentThread.CurrentCulture.Name).min.js"></script>
+
+    <script>
+    $.validator.methods.number = function (value, element) {
+        return this.optional(element) || !isNaN(Globalize.parseFloat(value));
+    }
+
+    $(document).ready(function () {
+        Globalize.culture('@(System.Threading.Thread.CurrentThread.CurrentCulture.Name)');
+    });
+    </script>
+
+    <script>
+    jQuery.extend(jQuery.validator.methods, {
+        range: function (value, element, param) {
+            var val = Globalize.parseFloat(value);
+            return this.optional(element) || (
+                val >= param[0] && val <= param[1]);
+
+        }
+    });
+
+    $.validator.methods.date = function (value, element) {
+        return this.optional(element) ||
+            Globalize.parseDate(value) ||
+            Globalize.parseDate(value, "dd-MM-yyyy")
+    }
+    </script>
 </body>
 </html>
