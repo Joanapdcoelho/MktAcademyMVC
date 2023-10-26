@@ -23,6 +23,7 @@ namespace MktAcademy.Models
         [DataType(DataType.Currency)]//tipo moeda
         [DisplayFormat(DataFormatString ="{0:C2}", ApplyFormatInEditMode = false)]//formatar 2 casas decimais, mas guarda com o formato que está na tabela
         [Required (ErrorMessage = "You must insert a {0}")]
+        [Display(Name = "Price")]
         public decimal Price { get; set; }
          
 
@@ -41,6 +42,8 @@ namespace MktAcademy.Models
         public string Remarks { get; set; }    
         
         public virtual ICollection<SupplierCourse> SupplierCourses { get; set; }
+
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }//liga com OrderDetail
 
     }
 }

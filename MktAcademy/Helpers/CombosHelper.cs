@@ -24,6 +24,18 @@ namespace MktAcademy.Helpers
             return DocumentTypes.OrderBy(d => d.Description).ToList();
         }
 
+        public static List<Customer> GetCustomersName()
+        {
+            var Customers = db.Customers.ToList();
+            Customers.Add(new Customer 
+            { 
+                CustomerID = 0, 
+                CustomerFirstName = "[Select a customer]" 
+            });
+
+            return Customers.OrderBy(c => c.Name).ToList();
+        }
+
         public void Dispose() 
         { 
             db.Dispose(); 

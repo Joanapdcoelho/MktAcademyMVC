@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -20,6 +21,10 @@ namespace MktAcademy.Models
         [Required(ErrorMessage = "You must insert a {0}")]
         [Display(Name = "Last Name")]
         public string CustomerLastName { get; set; }
+
+        [Display(Name ="Name")]
+        [NotMapped]
+        public string Name { get { return $"{CustomerFirstName} {CustomerLastName}"; } }
 
         [DataType(DataType.PhoneNumber)]
         [Required(ErrorMessage = "You must enter a  {0}!")]
@@ -46,5 +51,8 @@ namespace MktAcademy.Models
         public int DocumentTypeID { get; set; }
 
         public virtual DocumentType DocumentType { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; }//liga com as orders o cliente faz orders
+
     }
 }

@@ -32,6 +32,8 @@ namespace MktAcademy.Models
 
         public virtual Order Order { get; set; } //liga com a Order
 
+        public virtual Course Course { get; set; } //o Course 
+
 
     }
 }

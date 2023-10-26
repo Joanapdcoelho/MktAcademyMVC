@@ -17,8 +17,9 @@ namespace MktAcademy.Models
 
         public OrderStatus OrderStatus { get; set; }//tem uma encomenda
 
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; } //liga com OrderDetail
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; } //liga com OrderDetail muitas encomendas de Courses
 
+        public virtual Customer Customer { get; set; }//liga com o customer que fez a encomenda
 
     }
 }
