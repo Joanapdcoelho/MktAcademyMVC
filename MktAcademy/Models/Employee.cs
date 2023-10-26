@@ -34,8 +34,9 @@ namespace MktAcademy.Models
         [Required(ErrorMessage = "You have to enter an email!")]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "You must enter a {0}")]
+        [Range(1, double.MaxValue, ErrorMessage = "You must enter a {0}")]
         [Display(Name = "Document Type")]
-        [Required(ErrorMessage = "You must insert a {0}")]
         public int DocumentTypeID { get; set; }//guarda o Cartão de cidadão
 
         [NotMapped] //não é colocado na base de dados serve apenas para cálculo

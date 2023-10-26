@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MktAcademy.Data;
+using MktAcademy.Helpers;
 using MktAcademy.Models;
 
 namespace MktAcademy.Controllers
@@ -40,7 +41,9 @@ namespace MktAcademy.Controllers
         // GET: Employees/Create
         public ActionResult Create()
         {
-            ViewBag.DocumentTypeID = new SelectList(db.DocumentTypes, "DocumentTypeID", "Description");
+                      
+
+            ViewBag.DocumentTypeID = new SelectList(CombosHelper.GetDocumentTypes(), "DocumentTypeID", "Description");
             return View();
         }
 
@@ -58,7 +61,7 @@ namespace MktAcademy.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DocumentTypeID = new SelectList(db.DocumentTypes, "DocumentTypeID", "Description", employee.DocumentTypeID);
+            ViewBag.DocumentTypeID = new SelectList(CombosHelper.GetDocumentTypes(), "DocumentTypeID", "Description", employee.DocumentTypeID);
             return View(employee);
         }
 

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MktAcademy.Data;
+using MktAcademy.Helpers;
 using MktAcademy.Models;
 
 namespace MktAcademy.Controllers
@@ -40,11 +41,9 @@ namespace MktAcademy.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
-            var list = db.DocumentTypes.ToList();
-            list.Add(new DocumentType { DocumentTypeID = 0, Description = "[Select a type of document]" });
-            list = list.OrderBy(c => c.Description).ToList();
+            
 
-            ViewBag.DocumentTypeID = new SelectList(list.OrderBy(c => c.Description), "DocumentTypeID", "Description");
+            ViewBag.DocumentTypeID = new SelectList(CombosHelper.GetDocumentTypes(), "DocumentTypeID", "Description");
 
             return View();
         }
@@ -55,8 +54,7 @@ namespace MktAcademy.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CustomerID,CustomerFirstName,CustomerLastName,Phone,Address,Email,Document,DocumentTypeID")] Customer customer)
-        {          
-                     
+        {                               
 
             if (ModelState.IsValid)
             {
@@ -65,7 +63,8 @@ namespace MktAcademy.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DocumentTypeID = new SelectList(db.DocumentTypes, "DocumentTypeID", "Description", customer.DocumentTypeID);
+            
+            ViewBag.DocumentTypeID = new SelectList(CombosHelper.GetDocumentTypes(), "DocumentTypeID", "Description", customer.DocumentTypeID);
 
             return View(customer);
         }

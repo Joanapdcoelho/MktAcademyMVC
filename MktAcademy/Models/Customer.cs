@@ -40,6 +40,9 @@ namespace MktAcademy.Models
         [StringLength(20, ErrorMessage = "The {0} should be between {2} and {1} characters", MinimumLength = 5)]
         public string Document {  get; set; }
 
+        [Required(ErrorMessage ="You must enter a {0}")]
+        [Range(1, double.MaxValue, ErrorMessage="You must enter a {0}")]
+        [Display(Name ="Document Type")]
         public int DocumentTypeID { get; set; }
 
         public virtual DocumentType DocumentType { get; set; }
