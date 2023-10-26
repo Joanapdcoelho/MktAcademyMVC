@@ -16,5 +16,7 @@ namespace MktAcademy.Models
         public string Description { get; set; }
 
         public virtual ICollection<Employee> Employees { get; set; }//efetua a ligação com os empregados e o tipo de documento que é registado
+
+        public virtual ICollection<Customer> Customers { get; set; }//efetua a ligação com os customers e o tipo de documento que é registado
     }
 }

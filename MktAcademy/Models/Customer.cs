@@ -6,40 +6,42 @@ using System.Web;
 
 namespace MktAcademy.Models
 {
-    public class Supplier
+    public class Customer
     {
         [Key]
-        public int SupplierID { get; set; }
+        public int CustomerID { get; set; }
 
-        [Required (ErrorMessage = "You must enter a  {0} for the supplier!")]
         [StringLength(30, ErrorMessage = "The {0} should be between {2} and {1} characters", MinimumLength = 3)]
-        [Display(Name ="Supplier Name")]
-        public string SupplierName { get; set; }
+        [Required(ErrorMessage = "You must insert a {0}")]
+        [Display(Name = "First Name")]
+        public string CustomerFirstName { get; set; }
 
-        [Display(Name = "Contact First Name")]
-        [Required(ErrorMessage = "You must enter a  {0} for the supplier contact!")]
         [StringLength(30, ErrorMessage = "The {0} should be between {2} and {1} characters", MinimumLength = 3)]
-        public string ContactFirstName {  get; set; }
-
-        [Display(Name = "Contact Last Name")]
-        [Required(ErrorMessage = "You must enter a  {0} for the supplier contact!")]
-        [StringLength(30, ErrorMessage = "The {0} should be between {2} and {1} characters", MinimumLength = 3)]
-        public string ContactLastName { get; set; }
+        [Required(ErrorMessage = "You must insert a {0}")]
+        [Display(Name = "Last Name")]
+        public string CustomerLastName { get; set; }
 
         [DataType(DataType.PhoneNumber)]
         [Required(ErrorMessage = "You must enter a  {0}!")]
-        [Display(Name ="Phone Number")]
+        [Display(Name = "Phone Number")]
         [StringLength(30, ErrorMessage = "The {0} should be between {2} and {1} digits", MinimumLength = 9)]
-        public string Phone {  get; set; }
+        public string Phone { get; set; }
 
         [Required(ErrorMessage = "You must enter an  {0}!")]
-        [Display(Name ="Address")]
+        [Display(Name = "Address")]
         [StringLength(100, ErrorMessage = "The {0} should be between {2} and {1} characters", MinimumLength = 3)]
         public string Address { get; set; }
 
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        public virtual ICollection<SupplierCourse> SupplierCourses { get; set; }
+        [Required(ErrorMessage = "You must enter an  {0}!")]
+        [Display(Name = "Document number")]
+        [StringLength(20, ErrorMessage = "The {0} should be between {2} and {1} characters", MinimumLength = 5)]
+        public string Document {  get; set; }
+
+        public int DocumentTypeID { get; set; }
+
+        public virtual DocumentType DocumentType { get; set; }
     }
 }

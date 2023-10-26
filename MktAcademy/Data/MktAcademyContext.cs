@@ -35,5 +35,7 @@ namespace MktAcademy.Data
         public System.Data.Entity.DbSet<MktAcademy.Models.Employee> Employees { get; set; }
 
         public System.Data.Entity.DbSet<MktAcademy.Models.Supplier> Suppliers { get; set; }
+
+        public System.Data.Entity.DbSet<MktAcademy.Models.Customer> Customers { get; set; }
     }
 }
