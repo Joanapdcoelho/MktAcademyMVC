@@ -18,5 +18,7 @@ namespace MktAcademy.ViewModels
         [Required(ErrorMessage = "You must insert a {0}")]
         [Display(Name = "Value")]
         public decimal Value { get { return Price * (decimal)Quantity; } }
+
+
     }
 }

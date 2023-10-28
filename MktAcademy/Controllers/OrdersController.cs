@@ -25,5 +25,15 @@ namespace MktAcademy.Controllers
 
             return View(orderView); //para fazer uma encomenda nova
         }
+
+        public ActionResult AddCourse()
+        {
+            var list = db.Courses.ToList();
+            list.Add(new CourseOrder { CourseID = 0, Description = "Select a Course..." });
+
+            ViewBag.CourseID = new SelectList(list.OrderBy(c => c.Description).ToList(), "CourseID", "Description");
+
+            return View();
+        }
     }
 }
