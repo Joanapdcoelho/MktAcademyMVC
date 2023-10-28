@@ -13,7 +13,7 @@ namespace MktAcademy.Models
 
         public int OrderID { get; set; }
 
-        public int ProductID { get; set; }
+        public int CourseID { get; set; }
 
         [StringLength(30, ErrorMessage = "The {0} should be between {2} and {1} characters", MinimumLength = 3)]
         [Required(ErrorMessage = "You must insert a {0}")]

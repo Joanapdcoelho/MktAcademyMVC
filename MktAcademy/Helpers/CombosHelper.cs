@@ -36,6 +36,18 @@ namespace MktAcademy.Helpers
             return Customers.OrderBy(c => c.Name).ToList();
         }
 
+        public static List<Course> GetCourses()
+        {
+            var Courses = db.Courses.ToList();
+            Courses.Add(new Course
+            {
+                CourseID = 0,
+                Description = "Select a Course..."
+            });
+
+            return Courses.OrderBy(c => c.Description).ToList();
+        }
+
         public void Dispose() 
         { 
             db.Dispose(); 

@@ -37,5 +37,9 @@ namespace MktAcademy.Data
         public System.Data.Entity.DbSet<MktAcademy.Models.Supplier> Suppliers { get; set; }
 
         public System.Data.Entity.DbSet<MktAcademy.Models.Customer> Customers { get; set; }
+
+        public System.Data.Entity.DbSet<MktAcademy.Models.Order> Orders { get; set; }
+
+        public System.Data.Entity.DbSet<MktAcademy.Models.OrderDetail> OrderDetails { get; set; }
     }
 }
