@@ -11,17 +11,24 @@ using MktAcademy.Models;
 
 namespace MktAcademy.Controllers
 {
+    //autorizar um utilizador específico
+    //[Authorize(Users = "leonorpimenta32@gmail.com")]
+    // para entrar no controlador é preciso autorização
+    //[Authorize]
     public class CoursesController : Controller
     {
         private MktAcademyContext db = new MktAcademyContext();
 
+
         // GET: Courses
+        [Authorize(Roles = "View")]
         public ActionResult Index()
         {
             return View(db.Courses.ToList());
         }
 
         // GET: Courses/Details/5
+        [Authorize(Roles = "View")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,7 +43,9 @@ namespace MktAcademy.Controllers
             return View(course);
         }
 
+        //[Authorize]
         // GET: Courses/Create
+        [Authorize(Roles = "Create")]
         public ActionResult Create()
         {
             return View();
@@ -66,7 +75,9 @@ namespace MktAcademy.Controllers
             return View(course);
         }
 
+        //[Authorize]
         // GET: Courses/Edit/5
+        [Authorize(Roles = "Edit")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -97,7 +108,9 @@ namespace MktAcademy.Controllers
             return View(course);
         }
 
+        //[Authorize]
         // GET: Courses/Delete/5
+        [Authorize(Roles = "Delete")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
