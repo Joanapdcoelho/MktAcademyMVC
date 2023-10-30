@@ -1,4 +1,6 @@
-﻿using MktAcademy.Data;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using MktAcademy.Data;
 using MktAcademy.Models;
 using System;
 using System.Collections.Generic;
@@ -9,7 +11,10 @@ namespace MktAcademy.Helpers
 {
     public class CombosHelper
     {
+        
         private static MktAcademyContext db = new MktAcademyContext();
+
+        private static ApplicationDbContext da = new ApplicationDbContext();
 
 
         public static List<DocumentType> GetDocumentTypes()
@@ -46,6 +51,14 @@ namespace MktAcademy.Helpers
             });
 
             return Courses.OrderBy(c => c.Description).ToList();
+        }
+
+        public static List<IdentityRole> GetRoles()
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(da));
+            var list = roleManager.Roles.ToList();//transformar em lista
+            list.Add(new IdentityRole { Id = "", Name = "[Select a permission...]" });
+            return list.OrderBy(r => r.Name).ToList();
         }
 
         public void Dispose() 

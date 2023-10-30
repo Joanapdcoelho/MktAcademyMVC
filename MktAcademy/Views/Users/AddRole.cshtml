@@ -1,0 +1,31 @@
+﻿@model MktAcademy.ViewModels.UserView
+
+@{
+    ViewBag.Title = "Add role permissions ";
+}
+
+<h2>Add permissions to the user : @Model.UserName</h2>
+<h3>@ViewBag.Error</h3>
+
+@using (Html.BeginForm("AddRole", "Users", new {userID = Model.UserID} ,FormMethod.Post)) //passo os parâmetros
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Role.RoleID, "RoleID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("RoleID", null, htmlAttributes: new { @class = "form-select" })
+                @Html.ValidationMessageFor(model => model.Role.RoleID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br /><br />
+        @Html.ActionLink("Return", "Roles", new {userId = Model.UserID}, new {@class = "btn btn-info"})
+        <input type="submit" value="Add permission" class="btn btn-success"/>
+             
+    </div>   
+        
+}
+

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Permissions;
 using System.Web;
 
 namespace MktAcademy.ViewModels
@@ -17,6 +18,8 @@ namespace MktAcademy.ViewModels
         public string Email { get; set; }
 
         public List<RoleView> Roles { get; set; }
+
+        public RoleView Role { get; set; }
 
 
     }

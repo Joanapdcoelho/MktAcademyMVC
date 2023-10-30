@@ -18,3 +18,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.nav-item.active .nav-link {      
+    border-bottom: 2px solid blue;
+    color: black;
+}

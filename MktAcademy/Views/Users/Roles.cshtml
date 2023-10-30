@@ -6,7 +6,7 @@
 <h2>Permissions for user: @Model.UserName</h2>
 
 <p>
-    @Html.ActionLink("Add Permission", "AddRole", new { user = Model }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Add Permission", "AddRole", new { userID = Model.UserID }, new { @class = "btn btn-primary" })
     @Html.ActionLink("Return", "Index", new { }, new { @class = "btn btn-info" })
 </p>
 
@@ -19,7 +19,7 @@
                         @Html.DisplayFor(modelItem => Model.Roles[i].RoleName)
                     </td>
                     <td>
-                        @Html.ActionLink("Delete", "Delete", new {user = Model, Model.Roles[i].RoleID })
+                        @Html.ActionLink("Delete", "Delete", new {userID = Model.UserID, roleID = Model.Roles[i].RoleID })
                     </td>
                 </tr>
             }
