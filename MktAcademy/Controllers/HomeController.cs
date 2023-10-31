@@ -8,9 +8,12 @@ namespace MktAcademy.Controllers
 {
     public class HomeController : Controller
     {
+        
         public ActionResult Index()
         {
-            return View();
+            //HomeIndexViewModel model = new HomeIndexViewModel();
+            //return View(model.CreateModel(search));
+           return View();
         }
 
         public ActionResult About()

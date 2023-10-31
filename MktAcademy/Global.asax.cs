@@ -14,6 +14,7 @@ namespace MktAcademy
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        //primeiro método que é aplicado mal a aplicação arranca
         protected void Application_Start()
         {
             //faz logo as alterações da DB antes de começar
@@ -68,7 +69,7 @@ namespace MktAcademy
             {
                 user = new ApplicationUser
                 {
-                    UserName = "jspdc81@gmail.com",
+                    UserName = "admin",
                     Email = "jspdc81@gmail.com"
                 };
 

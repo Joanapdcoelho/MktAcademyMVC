@@ -19,7 +19,19 @@ textarea {
     max-width: 280px;
 }
 
+/*.icon-hover:hover {
+    border-color: #3b71ca !important;
+    background-color: white !important;
+}
+
+.icon-hover:hover i {
+        color: #3b71ca !important;
+}*/
+
+Active Menu
 .nav-item.active .nav-link {      
     border-bottom: 2px solid blue;
     color: black;
 }
+
+
