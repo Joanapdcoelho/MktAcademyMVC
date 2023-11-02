@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -22,10 +23,27 @@ namespace MktAcademy.Controllers
 
         // GET: Courses
         [Authorize(Roles = "View")]
-        public ActionResult Index()
-        {
-            return View(db.Courses.ToList());
-        }
+
+        //public ActionResult Index()
+        //{       
+        //    return View(db.Courses.ToList());            
+        //}
+        
+        public ActionResult Index(string searchCourse, string searchPrice)
+        {            
+            //buscar todos 
+            var courses = from c in db.Courses select c;            
+
+            //filtrar 
+            if (!string.IsNullOrEmpty(searchCourse))
+            {
+                courses = courses.Where(s => s.Name.Contains(searchCourse));
+                //price = price.Where(s => s.Price.Contains(searchPrice));
+            }
+
+            //return View(db.Courses.ToList());
+            return View(courses.ToList());
+        }               
 
         // GET: Courses/Details/5
         [Authorize(Roles = "View")]
@@ -35,7 +53,9 @@ namespace MktAcademy.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Course course = db.Courses.Find(id);
+
             if (course == null)
             {
                 return HttpNotFound();
