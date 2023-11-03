@@ -152,7 +152,15 @@ namespace MktAcademy.Controllers
         {
             Course course = db.Courses.Find(id);
             db.Courses.Remove(course);
-            db.SaveChanges();
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+            }           
             return RedirectToAction("Index");
         }
 

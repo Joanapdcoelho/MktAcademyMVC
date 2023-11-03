@@ -18,6 +18,6 @@ namespace MktAcademy.Models
 
         public virtual Supplier Supplier { get; set; }
 
-       public virtual Course Course { get; set;}
+        public virtual Course Course { get; set;}
     }
 }

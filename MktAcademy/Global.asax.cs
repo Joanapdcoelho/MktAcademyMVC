@@ -69,7 +69,7 @@ namespace MktAcademy
             {
                 user = new ApplicationUser
                 {
-                    UserName = "admin",
+                    UserName = "jspdc81@gmail.com",
                     Email = "jspdc81@gmail.com"
                 };
 
